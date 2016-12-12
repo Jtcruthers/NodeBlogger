@@ -1,5 +1,7 @@
 extends layout
 
 block content
-    h1 Welcome to Blogger!
-
+  if (user == undefined)
+    h1 Welcome to Blogger
+  else
+    h1= "Welcome to Blogger, "  + user.username

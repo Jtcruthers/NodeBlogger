@@ -4,10 +4,15 @@ var Account = require('../models/account');
 var Blog = require('../models/blog');
 var router = express.Router();
 
+function loggedIn(req, res, next) {
+    if (req.user) {
+        next();
+    } else {
+        res.redirect('/users/login');
+    }
+}
 
 router.get('/', function (req, res) {
-    var post = new Blog({username: 'jtcruthers', title: "dhf", content: "first blog post."});
-    post.save(function(err) { });
     res.render('index', { user : req.user });
 });
 

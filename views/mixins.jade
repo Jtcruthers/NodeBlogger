@@ -1,7 +1,18 @@
-mixin navbar
-    nav(class="navbar")
-        ul
-            li
-                a(href="/") Home
-                a(href="/login") Login
-                a(href="/register") Register
+mixin navbar(user)
+  nav(class="navbar navbar-default")
+    .container-fluid
+      .navbar-header
+        a(class="navbar-brand", href="#") Blogger
+      ul(class="nav navbar-nav")
+        li
+          a(href="/") Home
+        if (user == undefined)
+          li
+            a(href="/users/login") Login
+          li
+            a(href="/users/register") Register
+        else
+          li
+            a(href="/users/settings")= user.username
+          li
+            a(href="/users/logout") Logout

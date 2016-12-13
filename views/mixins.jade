@@ -3,9 +3,10 @@ mixin navbar(user)
     .container-fluid
       .navbar-header
         a(class="navbar-brand", href="#") Blogger
-      ul(class="nav navbar-nav")
+      ul(class="nav navbar-nav navbar-left")
         li
           a(href="/") Home
+      ul(class="nav navbar-nav navbar-right")
         if (user == undefined)
           li
             a(href="/users/login") Login

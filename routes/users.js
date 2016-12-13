@@ -37,4 +37,12 @@ router.get('/logout', function(req, res) {
     res.redirect('/');
 });
 
+router.get('/:username', function(req, res) {
+    Account.findOne({username: req.params.username}, function(err, account) {
+        console.log(req.params.username);
+        console.log(account);
+        res.render('showUser', {user: account});
+    });
+});
+
 module.exports = router;

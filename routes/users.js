@@ -2,6 +2,7 @@ var express = require('express');
 var passport = require('passport');
 var Account = require('../models/account');
 var Blog = require('../models/blog');
+var helpers = require('./helpers');
 var router = express.Router();
 
 router.get('/', function (req, res) {
@@ -37,7 +38,7 @@ router.get('/logout', function(req, res) {
     res.redirect('/');
 });
 
-router.get('/:username', function(req, res) {
+router.get('/:username', helpers.loggedIn, function(req, res) {
     Account.findOne({username: req.params.username}, function(err, account) {
         console.log(req.params.username);
         console.log(account);

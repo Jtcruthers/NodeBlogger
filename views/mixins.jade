@@ -6,6 +6,8 @@ mixin navbar(user)
       ul(class="nav navbar-nav navbar-left")
         li
           a(href="/") Home
+        li
+          a(href="/blogs") Blogs
       ul(class="nav navbar-nav navbar-right")
         if (user == undefined)
           li

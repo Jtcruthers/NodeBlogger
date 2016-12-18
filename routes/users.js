@@ -38,6 +38,10 @@ router.get('/logout', function(req, res) {
     res.redirect('/');
 });
 
+router.get('/settings', helpers.loggedIn, function(req, res) {
+    res.render('userSettings', {user: req.user});
+});
+
 router.get('/:username', helpers.loggedIn, function(req, res) {
     Account.findOne({username: req.params.username}, function(err, account) {
         console.log(req.params.username);

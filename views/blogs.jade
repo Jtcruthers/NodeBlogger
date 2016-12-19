@@ -1,7 +1,10 @@
 extends layout
 
 block content
+  form(method="get" action="/blogs/new")
+    button(type="submit", style="display: inline") New Blog
   - for (var i = 0; i < blogs.length; i++) {
-      h1= blogs[i].title
+      a(href="/blogs/" + blogs[i].id)
+          h1= blogs[i].title
       p= blogs[i].content
   - }

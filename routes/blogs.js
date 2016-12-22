@@ -21,7 +21,7 @@ router.get('/:id', loggedIn, function(req, res) {
     });
 });
 
-router.post('/new', loggedIn, function(req, res) {
+router.post('/', loggedIn, function(req, res) {
     var blog = new Blog({ title: req.body.title, content: req.body.content}); 
     blog.save(function(err) {
         if (err) {
@@ -29,7 +29,7 @@ router.post('/new', loggedIn, function(req, res) {
         }
     });
     
-    res.redirect(blog.id);
+    res.redirect('/blogs/' + blog.id);
 });
 
 module.exports = router;
